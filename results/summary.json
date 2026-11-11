@@ -1,0 +1,99 @@
+{
+  "dataset": {
+    "rows_raw": 30000,
+    "rows_after_cleaning": 29965,
+    "n_features": 23,
+    "id_columns_dropped": [
+      "ID"
+    ],
+    "missing_values_dropped_rows": 0,
+    "duplicate_rows_removed": 35,
+    "education_codes_recoded": 345,
+    "marriage_codes_recoded": 54,
+    "class_counts": {
+      "no_default (0)": 23335,
+      "default (1)": 6630
+    },
+    "default_rate_pct": 22.13,
+    "train_size": 23972,
+    "test_size": 5993,
+    "split": "stratified 80/20",
+    "transformations": "StandardScaler fitted on training data only (inside model pipeline)"
+  },
+  "baseline": {
+    "params": {
+      "hidden_layer_sizes": "(32,)",
+      "activation": "relu",
+      "learning_rate_init": "0.001",
+      "alpha": "0.0001"
+    }
+  },
+  "bat": {
+    "config": {
+      "n_bats": 10,
+      "iterations": 8,
+      "f_min": 0.0,
+      "f_max": 2.0,
+      "loudness0": 1.0,
+      "pulse_rate0": 0.5,
+      "alpha": 0.9,
+      "gamma": 0.9,
+      "cv_folds": 3,
+      "seed": 42,
+      "metric": "auc",
+      "search_max_iter": 100
+    },
+    "dimensions": [
+      "hidden1",
+      "hidden2",
+      "learning_rate",
+      "alpha",
+      "activation"
+    ],
+    "search_rows": 6000,
+    "operators": {
+      "frequency": "f in [0.0, 2.0]",
+      "velocity_update": "v = v + (x - x_best) * f",
+      "local_walk": "x_best + 0.01 * mean(A) * N(0,1) when rand > r",
+      "acceptance": "rand < A and better fitness; A *= 0.9; r grows with t"
+    },
+    "unique_evaluations": 89,
+    "best_cv_auc": 0.768,
+    "best_params": {
+      "hidden_layer_sizes": [
+        96,
+        24
+      ],
+      "learning_rate_init": 0.004999999999999999,
+      "alpha": 0.0004999999999999999,
+      "activation": "tanh"
+    }
+  },
+  "thresholds": {
+    "mode": "fixed",
+    "baseline": 0.5,
+    "optimised": 0.5,
+    "selection_metric": null
+  },
+  "results": {
+    "baseline": {
+      "accuracy": 0.8166193892875021,
+      "precision": 0.669150521609538,
+      "recall": 0.33861236802413275,
+      "f1": 0.4496745117676515,
+      "auc": 0.749832671939076,
+      "rmse": 0.37354661291700986,
+      "threshold": 0.5
+    },
+    "optimised": {
+      "accuracy": 0.8227932588019355,
+      "precision": 0.7115384615384616,
+      "recall": 0.334841628959276,
+      "f1": 0.4553846153846154,
+      "auc": 0.7600927664830663,
+      "rmse": 0.3715641414498322,
+      "threshold": 0.5
+    }
+  },
+  "runtime_seconds": 112.4
+}

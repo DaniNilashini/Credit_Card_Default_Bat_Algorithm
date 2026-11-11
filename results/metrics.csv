@@ -1,0 +1,3 @@
+,accuracy,precision,recall,f1,auc,rmse,threshold
+Baseline,0.8166,0.6692,0.3386,0.4497,0.7498,0.3735,0.5
+Bat-optimised,0.8228,0.7115,0.3348,0.4554,0.7601,0.3716,0.5
